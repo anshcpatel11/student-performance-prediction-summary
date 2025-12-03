@@ -1,33 +1,54 @@
-# Student Performance Prediction (Machine Learning Project)
+# Student Performance Prediction — Machine Learning Project
 
-This repository contains a machine learning project focused on predicting whether a student is academically at risk, defined as earning a final grade (G3) below 10. The work includes end‑to‑end preprocessing, classical ML models, and a custom Random Forest built entirely from scratch using NumPy.
+This project explores academic performance prediction using classical machine learning techniques and custom-built algorithms. The goal is to predict whether a student is at academic risk (defined as earning a final grade below 10) using demographic, behavioral, and school-related features from the UCI Student Performance dataset.
 
-## Overview
+The project demonstrates end-to-end ML workflow: data cleaning, feature engineering, algorithm design, model evaluation, and experimentation with ensemble methods.
 
-The project is structured in two phases:
+## Disclaimer
+This repository contains a high-level overview of my project work for portfolio purposes.  
+To protect academic integrity and prevent reuse in coursework, only selected files are publicly visible.  
+If you would like to review the full source code for professional or recruiting purposes, feel free to contact me and I can provide access.
 
-### Phase 1
-- Implement robust data loading
-- Build preprocessing pipeline:
-  - Target creation (`at_risk`)
-  - One‑hot encoding
-  - Median imputation
-  - Min‑max scaling
-- Add exploratory helpers (summary stats, correlations)
-- Implement baseline Gradient Boosting model
-- Build a **custom Decision Tree and Random Forest** without scikit‑learn
 
-### Phase 2
-- Use the full dataset (395 rows)
-- Perform feature selection (top‑K using F‑scores)
-- Build a stacking ensemble combining:
-  - Gradient Boosting
-  - Random Forest
-  - Logistic Regression (meta‑learner)
+## Project Highlights
 
-## Dataset
+### **Phase 1 — Core ML Pipeline + From-Scratch Algorithms**
 
-The project uses the **UCI Student Performance Dataset**, including student background, behavior, family attributes, and prior grades.
+* Robust data loading that handles multiple dataset formats
+* Comprehensive preprocessing:
+
+  * Target generation (`at_risk`)
+  * Categorical encoding
+  * Median imputation
+  * Min-max scaling
+* Exploratory statistics + correlation analysis helpers
+* Baseline model using Gradient Boosting
+* **Custom implementations (NumPy-only):**
+
+  * Decision Tree classifier
+  * Random Forest with bootstrap sampling and majority voting
+
+### **Phase 2 — Modeling Enhancements**
+
+* Transitioned to full dataset (395 rows)
+* Feature selection using ANOVA F-scores (top-K)
+* Stacking ensemble combining:
+
+  * Gradient Boosting
+  * Random Forest
+  * Logistic Regression meta-model
+
+---
+
+##  **Dataset**
+
+Uses the **UCI Student Performance Dataset**, which includes:
+
+* Demographics
+* Family background
+* Study habits
+* School support indicators
+* Prior grades
 
 Target variable:
 
@@ -35,22 +56,28 @@ Target variable:
 at_risk = 1 if G3 < 10 else 0
 ```
 
-Dataset reference:  
-https://archive.ics.uci.edu/dataset/320/student+performance
+Dataset reference:
+[https://archive.ics.uci.edu/dataset/320/student+performance](https://archive.ics.uci.edu/dataset/320/student+performance)
 
-## Technologies Used
-- Python
-- NumPy
-- Pandas
-- scikit‑learn
-- Custom algorithm implementation
+---
 
-## Project Structure
+## **Technologies Used**
+
+* Python
+* NumPy
+* Pandas
+* scikit-learn
+* Custom algorithm development
+* Data preprocessing and feature engineering
+
+---
+
+## **Project Structure**
 
 ```
 src/
-    student_project.py
-    phase2.py
+    student_project.py     # preprocessing + custom tree + custom random forest
+    phase2.py              # experiments and modeling enhancements
 
 data/
     student-mat.csv
@@ -62,44 +89,56 @@ requirements.txt
 README.md
 ```
 
-## Modeling Summary
+This structure supports adding new ML projects in the future under the same repo.
 
-### Baseline Gradient Boosting (Full Dataset)
-- Accuracy: 0.681  
-- F1 Score: 0.406  
-- ROC AUC: 0.675  
+---
 
-### Gradient Boosting + Feature Selection (Top 20 Features)
-- Accuracy: 0.739  
-- F1 Score: 0.523  
-- ROC AUC: 0.727  
+## **Model Performance**
 
-### Stacking Ensemble
-- Accuracy: 0.723  
-- F1 Score: 0.377  
-- ROC AUC: 0.686  
+### **Baseline Gradient Boosting (Full Dataset)**
 
-## Running the Project
+| Metric   | Score |
+| -------- | ----- |
+| Accuracy | 0.681 |
+| F1 Score | 0.406 |
+| ROC AUC  | 0.675 |
 
-Install requirements:
+### **Gradient Boosting + Feature Selection (Top 20 Features)**
 
-```
+| Metric   | Score |
+| -------- | ----- |
+| Accuracy | 0.739 |
+| F1 Score | 0.523 |
+| ROC AUC  | 0.727 |
+
+### **Stacking Ensemble**
+
+| Metric   | Score |
+| -------- | ----- |
+| Accuracy | 0.723 |
+| F1 Score | 0.377 |
+| ROC AUC  | 0.686 |
+
+Feature selection produced the most balanced and performant model overall.
+
+---
+
+## **How to Run the Project**
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-Run experiments:
+Run all Phase 2 experiments:
 
-```
+```bash
 python -m src.phase2
 ```
 
-## Possible Future Extensions
-- SHAP or permutation feature importance
-- Hyperparameter tuning
-- Bayesian networks or probabilistic models
-- Reinforcement learning for intervention allocation
-- Deployment as an interactive dashboard or API
 
-## Author
-Ansh Patel  
-GitHub: https://github.com/anshcpatel11
+## **Author**
+
+**Ansh Patel**
+GitHub: [https://github.com/anshcpatel11](https://github.com/anshcpatel11)
